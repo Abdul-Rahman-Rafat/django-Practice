@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Show Items{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/show.css' %}">
+{% endblock css %}
+
+{% block header1 %}<h1>Welcome to Books page</h1>{% endblock header1 %}
+
+{% block content %}
+<h2>List of Books</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Author</th>
+            <th>Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in lista %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.publish_date }}</td>
+            <td>
+                <a href="{% url 'author' item.author.id %}">{{ item.author.name }}</a>
+            </td>
+            <td>{{ item.rate }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">No books found.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{%load static %}
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    {% endblock css %}
+
+
+
+{% block content %}
+<div style="text-align:center; padding: 100px;">
+    <h1 style="font-size: 60px; color: #d9534f;">404</h1>
+    <h2>   Page Not found</h2>
+    <a href="{% url 'home' %}" style="color: #0275d8; text-decoration: none;">
+       back
+    </a>
+</div>
+{% endblock %}
